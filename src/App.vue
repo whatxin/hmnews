@@ -1,29 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div class="app">
+    app
+    {{ count }}
+    <hr />
+    <button @click="setCount">按钮</button>
+    <hr />
+    <button @click="getCount">按钮2</button>
+    <van-button type="default">默认按钮</van-button>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import { mapState, mapMutations, mapActions } from 'vuex'
+export default {
+  computed: {
+    ...mapState(['count'])
+    // count () {
+    //   return this.$store.state.count
+    // }
+  },
+  methods: {
+    ...mapMutations(['setCount']),
+    ...mapActions(['getCount'])
   }
 }
-</style>
+</script>
+
+<style scoped lang='less'></style>
